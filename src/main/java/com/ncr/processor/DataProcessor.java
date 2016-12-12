@@ -10,12 +10,28 @@ import java.util.Map.Entry;
 
 import com.ncr.exception.InvalidInputException;
 
+/**
+ * 
+ * Implementation of IDataProcessor
+ * 
+ * @author yaga
+ *
+ */
 public class DataProcessor implements IDataProcessor {
 
 	private static final String VALID_INPUT_REGEX = "\\d+(?:,\\s*\\d+)*";
 	private Map<String, Integer> dataMap = new HashMap<String, Integer>();
 	private List<String> listOfInvalidInputs = new ArrayList<String>();
 
+	/**
+	 * 
+	 * Will save the data to a map
+	 * 
+	 * throws exception in case of a invalid input
+	 * 
+	 * returns true/false if data is unique/duplicate
+	 * 
+	 */
 	@Override
 	public boolean saveData(String data) throws InvalidInputException {
 		if (!validate(data)) {
@@ -32,6 +48,11 @@ public class DataProcessor implements IDataProcessor {
 		}
 	}
 
+	/**
+	 * 
+	 * returns the number of duplicates till now
+	 * 
+	 */
 	@Override
 	public int countDuplicates() {
 		int count = 0;
@@ -42,6 +63,10 @@ public class DataProcessor implements IDataProcessor {
 		return count;
 	}
 
+	/**
+	 * 
+	 * returns List of most frequent groups
+	 */
 	@Override
 	public List<String> mostFrequentGroupsTillNow() {
 
